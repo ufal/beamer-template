@@ -1,0 +1,271 @@
+\documentclass[handout]{beamer}
+%
+% Choose how your presentation looks.
+%
+% For more themes, color themes and font themes, see:
+% http://deic.uab.es/~iblanes/beamer_gallery/index_by_theme.html
+%
+\mode<presentation>
+{
+  \usetheme{default}      % or try Darmstadt, Madrid, Warsaw, ...
+  \usecolortheme{default} % or try albatross, beaver, crane, ...
+  \usefonttheme{default}  % or try serif, structurebold, ...
+  \setbeamertemplate{navigation symbols}{}
+  \setbeamertemplate{caption}[numbered]
+}
+
+\usepackage[sort&compress,round,comma,authoryear]{natbib}
+\usepackage[english]{babel}
+%\usepackage[utf8]{inputenc}
+\usepackage{fontspec}
+\usepackage{todonotes}
+\newcommand{\td}[1]{\todo[inline]{#1}}
+\usepackage{multirow}
+\usepackage{listings}
+\usepackage{multicol}
+
+
+%\usepackage{gnuplot-lua-tikz}
+%\usepackage{amsmath}
+%\usepackage{amssymb}
+
+
+\usepackage{ufalslides}
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\def\course{NPFL000 Name of the course}
+\def\title{\LaTeX~template for LangTech courses taught at ÚFAL}
+\def\author{Jindřich Libovický}
+\def\date{September 7, 2018}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\definecolor{color1}{rgb}{.945098,.5843137,.58431372}
+\definecolor{color2}{rgb}{.70235294,.8050980,.40431372}
+\definecolor{color3}{rgb}{.40862745,.745098,.5098039215}
+\definecolor{color4}{rgb}{.56862745,.498039215,.8}
+% #F19595, #E1F195, #95F1B5, #917FCC
+
+\begin{document}
+
+\maketitle
+
+% Uncomment these lines for an automatically generated outline.
+%\begin{frame}{Outline} \tableofcontents \end{frame}
+
+
+\begin{frame}[fragile]
+    \frametitle{Content of the title page}
+
+1. Define the content of the title page
+    \begin{lstlisting}[language=TeX]
+\def\course{NPFL116 Compendium of Neural Machine Translation}
+\def\title{Attention Mechanism}
+\def\author{Jindřich Libovický, Jindřich Helcl}
+\def\date{March 1, 2017}
+\end{lstlisting}
+
+2. Generate the title slide using
+\begin{lstlisting}[language=TeX]
+\maketitle
+\end{lstlisting}
+
+    \vspace{5pt}
+
+    Hint: Don't use \textbf{ř} in your code snippets, it will break.
+
+\end{frame}
+
+% -----------------------------------------------------------------------------
+
+\begin{frame}[fragile]
+    \frametitle{Equations}
+
+    \centering Sans serif font also for equations
+
+    $$i\hbar\frac{\partial}{\partial t} \Psi(\mathbf{r},t) = \left [ \frac{-\hbar^2}{2\mu}\nabla^2 + V(\mathbf{r},t)\right ] \Psi(\mathbf{r},t) ]$$
+
+    \begin{lstlisting}[language=TeX]
+$$ i\hbar\frac{\partial}{\partial t} \Psi(\mathbf{r},t) = \left [ \frac{-\hbar^2}{2\mu}\nabla^2 + V(\mathbf{r},t)\right ] \Psi(\mathbf{r},t) ]$$
+    \end{lstlisting}
+
+\end{frame}
+
+
+% -----------------------------------------------------------------------------
+
+\begin{frame}[fragile]
+    \frametitle{Lables from the web}
+
+    \slidesbox{Slides}
+    \readingbox{Reading}
+    \hwbox{Homework}
+    \questionbox{Question}
+    \timebox{1 h}
+    \calendarbox{Oct 15}
+    \pointsbox{100 points}
+
+    \begin{lstlisting}[language=TeX]
+\slidesbox{Slides}
+\readingbox{Reading}
+\hwbox{Homework}
+\questionbox{Question}
+\timebox{1 h}
+\calendarbox{Oct 15}
+\pointsbox{100 points}
+\slidesbox{Slides}
+    \end{lstlisting}
+\end{frame}
+
+
+\begin{frame}[fragile]
+    \frametitle{Code listings}
+
+    This code snippet:
+    \begin{lstlisting}[language=Python]
+print("Hello, ÚFAL".)
+x = 3 + 5
+    \end{lstlisting}
+
+    is produced with this code:
+    \begin{lstlisting}[language=TeX]
+\begin{lstlisting}[language=Python]
+print("Hello, ÚFAL".)
+x = 3 + 5
+\ end{lstlisting}
+    \end{lstlisting}
+
+    Inline code (\lstinline[language=Python]{import numpy as np}) can be
+    inserted with the \lstinline[language=TeX]{\lstinline} command.
+
+    Do not forget to start the frame with \lstinline[language=TeX]{fragile}
+    option to beginning of the frame.
+
+\end{frame}
+
+
+\begin{frame}[fragile]
+    \frametitle{References}
+
+    Full citation on slide: \\ {\tiny \bibentry{helcl2017neural}}
+
+\begin{lstlisting}[language=TeX]
+Full citation: \\ {\tiny \bibentry{helcl2017neural}}
+\end{lstlisting}
+
+    \citet{sennrich2016neural} uses attention \citep{bahdanau2015neural}.
+
+    \begin{lstlisting}[language=TeX]
+\citet{sennrich2016neural} uses attention \citep{bahdanau2015neural}.
+    \end{lstlisting}
+
+    \tiny
+    \citet{snover2006study,lu2016knowing,tu2016modeling,feng2016improving,zhang2016recurrent,alkhouli2016alignment,graves2014neural,specia2016shared,elliott2016multi30k}
+
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{Itemize}
+
+    \begin{itemize}[<+->]
+
+        \item All human beings are born free and equal in dignity and rights.
+
+        \item They are endowed with reason and conscience and should act
+            towards one another in a spirit of brotherhood.
+
+        \item Everyone is entitled to all the rights and freedoms set forth in
+            this Declaration, without distinction of any kind, such as race,
+            colour, sex, language, religion, political or other opinion,
+            national or social origin, property, birth or other status.
+
+    \end{itemize}
+
+\end{frame}
+
+\begin{frame}
+    \frametitle{Enumerate}
+
+    \begin{enumerate}[<+->]
+
+        \item All human beings are born free and equal in dignity and rights.
+
+        \item They are endowed with reason and conscience and should act
+            towards one another in a spirit of brotherhood.
+
+        \item Everyone is entitled to all the rights and freedoms set forth in
+            this Declaration, without distinction of any kind, such as race,
+            colour, sex, language, religion, political or other opinion,
+            national or social origin, property, birth or other status.
+
+    \end{enumerate}
+
+\end{frame}
+
+\begin{frame}[allowframebreaks]
+    \frametitle{What happens with too much content?}
+
+    Babakotia, an extinct genus of sloth lemurs, lived in the northern part of
+    Madagascar. The name comes from the Malagasy word for the indri, to which
+    all sloth lemurs are closely related. Its morphological traits show
+    intermediate stages between the slow-moving smaller sloth lemurs and the
+    suspensory large sloth lemurs, and suggest a close relationship between
+    both groups and the extinct monkey lemurs. All sloth lemurs share many
+    traits with living sloths, demonstrating convergent evolution. Babakotia
+    had long forearms, curved digits, and highly mobile hip and ankle joints.
+    It shared its range with other sloth lemurs, including Palaeopropithecus
+    ingens and Mesopropithecus dolichobrachion. It was primarily a leaf-eater,
+    though it also ate fruit and hard seeds. It is known only from subfossil
+    remains and may have died out shortly after the arrival of humans on the
+    island, but not enough radiocarbon dating has been done with this species
+    to know for certain. Babakotia radofilai is the sole member of the genus
+    Babakotia and belongs to the family Palaeopropithecidae, which includes
+    three other genera of sloth lemurs: Palaeopropithecus, Archaeoindris, and
+    Mesopropithecus. This family in turn belongs to the infraorder
+    Lemuriformes, which includes all the Malagasy lemurs.[5][2]
+
+\end{frame}
+
+{
+\setbeamercolor{background canvas}{bg=lightgray}
+\begin{frame}[plain]
+ \centering
+
+    \colorbox{langtech}{{\bf\tiny\color{lightgray} \scalebox{0.9}{\title}}}
+
+    \vspace{5pt}{\color{langtech}\bfseries\Large Summary}\vspace{5pt}
+
+    {\setlength{\fboxrule}{1.5pt}
+    \fcolorbox{langtech}{white}{
+        \begin{minipage}{0.7\paperwidth}
+            \vspace{3pt}
+            \begin{enumerate}
+
+                \item This template is tremendous.
+
+                \item If you don't use the template you will be very very sad.
+
+                \item Believe me. It's tremendous.
+
+            \end{enumerate}
+        \end{minipage}
+    }}
+
+
+    \begin{textblock*}{\paperwidth}(0pt,\paperheight - 25pt)
+        \centering
+        \Large\bf \url{ufal.mff.cuni.cz/courses/npfl000}
+    \end{textblock*}
+\end{frame}}
+
+
+\begin{frame}[allowframebreaks]
+    \frametitle{References}
+    \tiny
+    \bibliography{references.bib}
+    \bibliographystyle{plainnat}
+\end{frame}
+
+
+\end{document}

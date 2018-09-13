@@ -1,0 +1,162 @@
+\NeedsTeXFormat{LaTeX2e}[1994/06/01]
+\ProvidesPackage{kompendium}
+  [2018/26/02 style for UFAL lectures]
+
+\RequirePackage{pstricks}
+\RequirePackage{fontspec}
+\RequirePackage{graphicx}
+
+\mode<presentation>
+{
+  \usetheme{default}
+  \usecolortheme{default}
+  \usefonttheme[onlymath]{serif}
+  \setbeamertemplate{navigation symbols}{}
+  \setbeamertemplate{caption}[numbered]
+}
+\usepackage[absolute,overlay]{textpos}
+
+\usepackage{fontspec}
+\setmainfont{FreeSans}
+
+\usepackage[sort&compress,round,comma,authoryear]{natbib}
+\usepackage{bibentry}
+\nobibliography*
+
+\definecolor{ufal}{rgb}{.956862,.482352,.1254901}
+\definecolor{langtech}{rgb}{.956862,.482352,.1254901}
+%\definecolor{langtech}{rgb}{.067, .573, 0}
+\definecolor{lightgray}{rgb}{0.93, 0.93, 0.93}
+\definecolor{middlegray}{rgb}{0.87, 0.87, 0.87}
+
+% #F47B20
+\setbeamercolor{title}{fg=langtech}
+\setbeamercolor{titlelike}{fg=langtech}
+\setbeamercolor{block title}{fg=langtech}
+\setbeamertemplate{navigation symbols}{}
+
+\setbeamertemplate{itemize items}[circle]
+\setbeamercolor{itemize item}{fg=black}
+\setbeamercolor{itemize subitem}{fg=black}
+\setbeamercolor{itemize subsubitem}{fg=black}
+
+\setbeamercolor{enumerate item}{fg=langtech}
+\setbeamercolor{enumerate subitem}{fg=langtech}
+\setbeamercolor{enumerate subsubitem}{fg=langtech}
+\setbeamercolor{section in toc}{fg=white}
+
+\setbeamersize{text margin left=15pt,text margin right=15pt}
+\setbeamertemplate{frametitle}{
+    \begin{textblock*}{\paperwidth}(0pt,0pt)
+          \textblockcolour{lightgray}
+    \vspace{14pt}
+        \color{langtech}\bfseries~\insertframetitle\vspace{3pt}
+    \end{textblock*}
+
+    \begin{textblock*}{\paperwidth}(0pt,0pt)
+        \hfill\colorbox{langtech}{{\bf\tiny\color{lightgray} \scalebox{0.9}{\title}} }
+    \end{textblock*}
+
+    \vspace{30pt}
+}
+
+\def\maketitle{%
+    \begin{frame}
+
+        \begin{textblock*}{\paperwidth}(0pt,0pt)
+        \colorbox{langtech}{{\bf\color{lightgray} \course} }
+        \end{textblock*}
+
+        {\Huge\bf \color{langtech} \title}
+
+        \vspace{5pt}
+        \author
+
+        \vfill
+        \calendarbox{\date} \timebox{1.5 h}
+
+
+        \begin{textblock*}{\paperwidth}(0pt,\paperheight-45pt)
+        \colorbox{lightgray}{
+        \begin{minipage}{\paperwidth}
+        \vspace{5pt}
+
+        \begin{columns}
+            \column{.35\paperwidth}
+            \quad\input{cuni} \input{logo_ufal} \includegraphics[scale=0.14]{langtech.png}
+
+            \column{.48\paperwidth}
+            \tiny
+            Charles Univeristy in Prague \\
+            Faculty of Mathematics and Physics \\
+            Institute of Formal and Applied Linguistics
+
+            \column{.2\paperwidth}
+            \input{cc-by-sa}
+
+        \end{columns}
+
+        \vspace{20pt}
+        \end{minipage}
+       }
+        \end{textblock*}
+    \end{frame}
+}
+
+\setbeamertemplate{footline}{
+    \hfill \insertframenumber/\inserttotalframenumber\quad\vspace{5pt}
+}
+
+\definecolor{slidesColor}{rgb}{.1764,.4392,.7255}
+\definecolor{readingColor}{rgb}{.1490,.7725,.3608}
+\definecolor{hwColor}{rgb}{.9686,.6863,.2431}
+\definecolor{questionColor}{rgb}{.2353,.7490,.8784}
+
+\newcommand{\hwbox}[1]{%
+    \begin{tikzpicture}
+        \node (1) [rectangle, rounded corners=5pt, fill=hwColor, text=white, minimum height=17pt] {\small #1};
+    \end{tikzpicture}}
+\newcommand{\slidesbox}[1]{%
+    \begin{tikzpicture}
+            \node (1) [rectangle, rounded corners=5pt, fill=slidesColor, text=white, minimum height=17pt] {\small #1};
+    \end{tikzpicture}}
+\newcommand{\questionbox}[1]{%
+    \begin{tikzpicture}
+            \node (1) [rectangle, rounded corners=5pt, fill=questionColor, text=white, minimum height=17pt] {\small #1};
+    \end{tikzpicture}}
+\newcommand{\readingbox}[1]{%
+    \begin{tikzpicture}
+            \node (1) [rectangle, rounded corners=5pt, fill=readingColor, text=white, minimum height=17pt] {\small #1};
+    \end{tikzpicture}}
+\newcommand{\timebox}[1]{%
+    \begin{tikzpicture}
+        \node (1) [rectangle, rounded corners=5pt, fill=lightgray, minimum height=17pt] {\scalebox{.007}{\input{time}} \small #1};
+    \end{tikzpicture}}
+\newcommand{\calendarbox}[1]{%
+    \begin{tikzpicture}
+        \node (1) [rectangle, rounded corners=5pt, fill=lightgray, minimum height=17pt] {\scalebox{.007}{\input{calendar}} \small #1};
+    \end{tikzpicture}}
+\newcommand{\pointsbox}[1]{%
+    \begin{tikzpicture}
+        \node (1) [rectangle, rounded corners=5pt, fill=lightgray, minimum height=17pt] {\scalebox{.007}{\input{piggy-bank}} \small #1};
+    \end{tikzpicture}}
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+\lstset{
+  basicstyle=\footnotesize\ttfamily,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+  numbers=left,
+  numberstyle=\tiny\color{gray},
+  keywordstyle=\color{blue},
+  commentstyle=\color{dkgreen},
+  stringstyle=\color{mauve},
+  breaklines=true,
+  breakatwhitespace=true,
+  numbersep=3pt,
+  backgroundcolor = \color{lightgray}}
+
