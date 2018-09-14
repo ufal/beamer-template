@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}[1994/06/01]
-\ProvidesPackage{kompendium}
+\ProvidesPackage{ufalslides}
   [2018/26/02 style for UFAL lectures]
 
 \RequirePackage{pstricks}
@@ -21,18 +21,19 @@
 
 \usepackage[sort&compress,round,comma,authoryear]{natbib}
 \usepackage{bibentry}
+\usepackage{ifthen}
 \nobibliography*
 
 \definecolor{ufal}{rgb}{.956862,.482352,.1254901}
-\definecolor{langtech}{rgb}{.956862,.482352,.1254901}
-%\definecolor{langtech}{rgb}{.067, .573, 0}
+\definecolor{ufal}{rgb}{.956862,.482352,.1254901}
+%\definecolor{ufal}{rgb}{.067, .573, 0}
 \definecolor{lightgray}{rgb}{0.93, 0.93, 0.93}
 \definecolor{middlegray}{rgb}{0.87, 0.87, 0.87}
 
 % #F47B20
-\setbeamercolor{title}{fg=langtech}
-\setbeamercolor{titlelike}{fg=langtech}
-\setbeamercolor{block title}{fg=langtech}
+\setbeamercolor{title}{fg=ufal}
+\setbeamercolor{titlelike}{fg=ufal}
+\setbeamercolor{block title}{fg=ufal}
 \setbeamertemplate{navigation symbols}{}
 
 \setbeamertemplate{itemize items}[circle]
@@ -40,9 +41,9 @@
 \setbeamercolor{itemize subitem}{fg=black}
 \setbeamercolor{itemize subsubitem}{fg=black}
 
-\setbeamercolor{enumerate item}{fg=langtech}
-\setbeamercolor{enumerate subitem}{fg=langtech}
-\setbeamercolor{enumerate subsubitem}{fg=langtech}
+\setbeamercolor{enumerate item}{fg=ufal}
+\setbeamercolor{enumerate subitem}{fg=ufal}
+\setbeamercolor{enumerate subsubitem}{fg=ufal}
 \setbeamercolor{section in toc}{fg=white}
 
 \setbeamersize{text margin left=15pt,text margin right=15pt}
@@ -50,11 +51,11 @@
     \begin{textblock*}{\paperwidth}(0pt,0pt)
           \textblockcolour{lightgray}
     \vspace{14pt}
-        \color{langtech}\bfseries~\insertframetitle\vspace{3pt}
+        \color{ufal}\bfseries~\insertframetitle\vspace{3pt}
     \end{textblock*}
 
     \begin{textblock*}{\paperwidth}(0pt,0pt)
-        \hfill\colorbox{langtech}{{\bf\tiny\color{lightgray} \scalebox{0.9}{\title}} }
+        
     \end{textblock*}
 
     \vspace{30pt}
@@ -62,18 +63,17 @@
 
 \def\maketitle{%
     \begin{frame}
-
         \begin{textblock*}{\paperwidth}(0pt,0pt)
-        \colorbox{langtech}{{\bf\color{lightgray} \course} }
+        \colorbox{ufal}{{\bf\color{lightgray} \course} }
         \end{textblock*}
 
-        {\Huge\bf \color{langtech} \title}
+        {\Huge\bf \color{ufal} \title}
 
         \vspace{5pt}
         \author
 
         \vfill
-        \calendarbox{\date} \timebox{1.5 h}
+        \calendarbox{\date}
 
 
         \begin{textblock*}{\paperwidth}(0pt,\paperheight-45pt)
@@ -81,18 +81,33 @@
         \begin{minipage}{\paperwidth}
         \vspace{5pt}
 
-        \begin{columns}
-            \column{.35\paperwidth}
-            \quad\input{cuni} \input{logo_ufal} \includegraphics[scale=0.14]{langtech.png}
-
-            \column{.48\paperwidth}
-            \tiny
-            Charles Univeristy in Prague \\
+        \begin{columns}[c]
+            \column{.8\paperwidth}
+            \input{logos/cuni}
+            \input{logos/ufal}
+            \ifdefined\langtech
+                \includegraphics[scale=0.14]{langtech.png}
+                \input{logos/opvv}
+            \fi
+            \begin{minipage}[c]{120pt}
+            \tiny Charles Univeristy in Prague \\
             Faculty of Mathematics and Physics \\
             Institute of Formal and Applied Linguistics
+            \end{minipage}
 
             \column{.2\paperwidth}
-            \input{cc-by-sa}
+            \quad\quad
+            \ifthenelse{\equal{\licence}{cc-by-nc-sa}}{\scalebox{0.8}{\input{cc/by-nc-sa}}}{}
+            \ifthenelse{\equal{\licence}{cc-by-nc-nd}}{\scalebox{0.8}{\input{cc/by-nc-nd}}}{}
+            \ifthenelse{\equal{\licence}{cc-by-nc}}{\scalebox{0.8}{\input{cc/by-nc}}}{}
+            \ifthenelse{\equal{\licence}{cc-by-nd}}{\scalebox{0.8}{\input{cc/by-nd}}}{}
+            \ifthenelse{\equal{\licence}{cc-by-sa}}{\scalebox{0.8}{\input{cc/by-sa}}}{}
+            \ifthenelse{\equal{\licence}{cc-by}}{\scalebox{0.8}{\input{cc/by}}}{}
+
+            \centering
+            \ifdefined\licence
+                \tiny unless otherwise stated
+            \fi
 
         \end{columns}
 
@@ -104,7 +119,11 @@
 }
 
 \setbeamertemplate{footline}{
-    \hfill \insertframenumber/\inserttotalframenumber\quad\vspace{5pt}
+    \colorbox{ufal}{{\bf\tiny\color{lightgray} \scalebox{0.9}{\title}}}
+    \ifdefined\shownavigation
+        \scalebox{0.9}{\insertsectionnavigationhorizontal{}{\hskip0pt   plus1filll}{}}
+    \fi
+    \hfill \insertframenumber/\inserttotalframenumber\quad
 }
 
 \definecolor{slidesColor}{rgb}{.1764,.4392,.7255}
@@ -150,8 +169,7 @@
   showstringspaces=false,
   columns=flexible,
   basicstyle={\small\ttfamily},
-  numbers=left,
-  numberstyle=\tiny\color{gray},
+  numbers=none,
   keywordstyle=\color{blue},
   commentstyle=\color{dkgreen},
   stringstyle=\color{mauve},
@@ -160,3 +178,4 @@
   numbersep=3pt,
   backgroundcolor = \color{lightgray}}
 
+\renewcommand\bibsection{\section[]{\refname}}

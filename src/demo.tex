@@ -1,4 +1,4 @@
-\documentclass[handout]{beamer}
+\documentclass[handout,aspectratio=169]{beamer}
 %
 % Choose how your presentation looks.
 %
@@ -34,17 +34,14 @@
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \def\course{NPFL000 Name of the course}
+\def\courseurl{https://ufal.cz/courses/npfl000}
 \def\title{\LaTeX~template for LangTech courses taught at ÚFAL}
 \def\author{Jindřich Libovický}
 \def\date{September 7, 2018}
+\def\licence{cc-by-nc-sa}
+\def\langtech{}
+\def\shownavigation{}
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-\definecolor{color1}{rgb}{.945098,.5843137,.58431372}
-\definecolor{color2}{rgb}{.70235294,.8050980,.40431372}
-\definecolor{color3}{rgb}{.40862745,.745098,.5098039215}
-\definecolor{color4}{rgb}{.56862745,.498039215,.8}
-% #F19595, #E1F195, #95F1B5, #917FCC
 
 \begin{document}
 
@@ -53,6 +50,7 @@
 % Uncomment these lines for an automatically generated outline.
 %\begin{frame}{Outline} \tableofcontents \end{frame}
 
+\section{A section}
 
 \begin{frame}[fragile]
     \frametitle{Content of the title page}
@@ -60,9 +58,13 @@
 1. Define the content of the title page
     \begin{lstlisting}[language=TeX]
 \def\course{NPFL116 Compendium of Neural Machine Translation}
+\def\courseurl{https://ufal.cz/courses/npfl000}
 \def\title{Attention Mechanism}
 \def\author{Jindřich Libovický, Jindřich Helcl}
 \def\date{March 1, 2017}
+\def\licence{cc-by-nc-sa}
+\def\langtech{} % shows the LangTech and the EU logo
+\def\shownavigation{} % shows the navigation links in the bottom line
 \end{lstlisting}
 
 2. Generate the title slide using
@@ -73,6 +75,44 @@
     \vspace{5pt}
 
     Hint: Don't use \textbf{ř} in your code snippets, it will break.
+
+\end{frame}
+
+% -----------------------------------------------------------------------------
+
+\begin{frame}[fragile]
+    \frametitle{Licence}
+
+    \begin{columns}
+        \column{0.25\textwidth}
+        \centering
+
+        \input{cc/by-nc-sa} \\ {\tt cc-by-nc-sa}
+
+        \vspace{3pt}\input{cc/by-nc-nd} \\ {\tt cc-by-cs-nd}
+
+        \vspace{3pt}\input{cc/by-nc} \\ {\tt cc-by-nc}
+
+        \column{0.25\textwidth}
+        \centering
+
+        \input{cc/by-nd} \\ {\tt cc-by-nd}
+
+        \vspace{3pt}\input{cc/by-sa} \\ {\tt cc-by-sa}
+
+        \vspace{3pt}\input{cc/by} \\ {\tt cc-by}
+
+        \column{0.5\textwidth}
+        Specify licence by:
+\begin{lstlisting}[language=TeX]
+\def\licence{cc-by-nc-sa}
+\end{lstlisting}
+
+    or omit the command entirely if you do not want to specify one.
+
+    \end{columns}
+
+%    If you do not want to specify licence, do not \lstinline{\def\licence{}}.
 
 \end{frame}
 
@@ -116,6 +156,8 @@ $$ i\hbar\frac{\partial}{\partial t} \Psi(\mathbf{r},t) = \left [ \frac{-\hbar^2
 \slidesbox{Slides}
     \end{lstlisting}
 \end{frame}
+
+\section{Another section}
 
 
 \begin{frame}[fragile]
@@ -232,12 +274,12 @@ Full citation: \\ {\tiny \bibentry{helcl2017neural}}
 \begin{frame}[plain]
  \centering
 
-    \colorbox{langtech}{{\bf\tiny\color{lightgray} \scalebox{0.9}{\title}}}
+    \colorbox{ufal}{{\bf\tiny\color{lightgray} \scalebox{0.9}{\title}}}
 
-    \vspace{5pt}{\color{langtech}\bfseries\Large Summary}\vspace{5pt}
+    \vspace{5pt}{\color{ufal}\bfseries\Large Summary}\vspace{5pt}
 
     {\setlength{\fboxrule}{1.5pt}
-    \fcolorbox{langtech}{white}{
+    \fcolorbox{ufal}{white}{
         \begin{minipage}{0.7\paperwidth}
             \vspace{3pt}
             \begin{enumerate}
