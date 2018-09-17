@@ -14,7 +14,10 @@
   \setbeamertemplate{navigation symbols}{}
   \setbeamertemplate{caption}[numbered]
 }
+\usepackage{pgf,tikz}
+\usepackage{calc}
 \usepackage[absolute,overlay]{textpos}
+\usepackage{listings}
 
 \usepackage{fontspec}
 \setmainfont{FreeSans}
@@ -47,22 +50,9 @@
 \setbeamercolor{section in toc}{fg=white}
 
 \setbeamersize{text margin left=15pt,text margin right=15pt}
-\setbeamertemplate{frametitle}{
-    \begin{textblock*}{\paperwidth}(0pt,0pt)
-          \textblockcolour{lightgray}
-    \vspace{14pt}
-        \color{ufal}\bfseries~\insertframetitle\vspace{3pt}
-    \end{textblock*}
 
-    \begin{textblock*}{\paperwidth}(0pt,0pt)
-        
-    \end{textblock*}
-
-    \vspace{30pt}
-}
-
-\def\maketitle{%
-    \begin{frame}
+\def\maketitle{{%
+    \begin{frame}[plain]
         \begin{textblock*}{\paperwidth}(0pt,0pt)
         \colorbox{ufal}{{\bf\color{lightgray} \course} }
         \end{textblock*}
@@ -76,21 +66,21 @@
         \calendarbox{\date}
 
 
-        \begin{textblock*}{\paperwidth}(0pt,\paperheight-45pt)
+        \begin{textblock*}{\paperwidth}(0pt,\dimexpr\paperheight-45pt\relax)
         \colorbox{lightgray}{
         \begin{minipage}{\paperwidth}
-        \vspace{5pt}
+        \vspace{10pt}
 
-        \begin{columns}[c]
-            \column{.8\paperwidth}
+        \begin{columns}[T]
+            \column{160pt}
             \input{logos/cuni}
             \input{logos/ufal}
             \ifdefined\langtech
-                \includegraphics[scale=0.14]{langtech.png}
+                \includegraphics[scale=0.14]{langtech.png}~
                 \input{logos/opvv}
             \fi
-            \begin{minipage}[c]{120pt}
-            \tiny Charles Univeristy in Prague \\
+            \column{125pt} \begin{minipage}[c]{120pt}
+            \tiny ~ \\ Charles Univeristy in Prague \\
             Faculty of Mathematics and Physics \\
             Institute of Formal and Applied Linguistics
             \end{minipage}
@@ -116,12 +106,59 @@
        }
         \end{textblock*}
     \end{frame}
+}}
+
+\newcommand\summary[2]{{
+\setbeamercolor{background canvas}{bg=lightgray}
+\begin{frame}[plain]
+ \centering
+
+    \colorbox{ufal}{{\bf\tiny\color{lightgray} \scalebox{0.9}{\title}}}
+
+    \vspace{5pt}{\color{ufal}\bfseries\Large #1}\vspace{5pt}
+
+    {\setlength{\fboxrule}{1.5pt}
+    \fcolorbox{ufal}{white}{
+        \begin{minipage}{0.7\paperwidth}
+            \vspace{3pt}
+            #2
+        \end{minipage}
+    }}
+
+
+    \begin{textblock*}{\paperwidth}(0pt,\dimexpr\paperheight-25pt\relax)
+        \centering
+        {\Large\bf\color{ufal} \url{\courseurl}}
+    \end{textblock*}
+\end{frame}}}
+
+\setbeamercolor{graybox}{fg=ufal,bg=lightgray}
+\setbeamertemplate{frametitle}{
+    \nointerlineskip
+    \begin{beamercolorbox}[sep=5pt,wd=\paperwidth]{graybox}
+        \color{ufal}\bfseries\insertframetitle
+    \end{beamercolorbox}
+
 }
 
-\setbeamertemplate{footline}{
+\newcommand\references[1]{%
+\begin{frame}[allowframebreaks]
+    \frametitle{References}
+    \tiny
+    \bibliography{#1}
+    \bibliographystyle{plainnat}
+\end{frame}}
+
+\newcommand\outline[1]{%
+\begin{frame}{#1} \tableofcontents \end{frame}}
+
+\newcommand\outlinecurrent[1]{%
+\begin{frame}{#1} \tableofcontents[currentsection] \end{frame}}
+
+\setbeamertemplate{footline}{%
     \colorbox{ufal}{{\bf\tiny\color{lightgray} \scalebox{0.9}{\title}}}
     \ifdefined\shownavigation
-        \scalebox{0.9}{\insertsectionnavigationhorizontal{}{\hskip0pt   plus1filll}{}}
+%        \scalebox{0.9}{\insertsectionnavigationhorizontal{}{\hskip0pt   plus1filll}{}}
     \fi
     \hfill \insertframenumber/\inserttotalframenumber\quad
 }

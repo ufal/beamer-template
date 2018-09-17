@@ -6,6 +6,7 @@ all: $(NAME).pdf
 
 $(NAME).pdf: $(NAME).tex references.bib ufalslides.sty
 	latexmk -pdflatex="$(LATEX) %O %S" -pdf -dvi- -ps- -halt-on-error $(NAME)
+	cp demo.pdf ..
 
 watch:
 	latexmk -pdflatex="$(LATEX) %O %S" -pdf -dvi- -ps- -interaction=nonstopmode -synctex=1 -pvc $(NAME)
@@ -15,3 +16,6 @@ view:
 
 clean:
 	rm $(NAME).{aux,bbl,log,out,pdf,toc}
+
+sty:
+	perl latexpand ufalslides.sty > ../ufalslides.sty

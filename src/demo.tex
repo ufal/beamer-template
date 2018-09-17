@@ -1,35 +1,6 @@
 \documentclass[handout,aspectratio=169]{beamer}
-%
-% Choose how your presentation looks.
-%
-% For more themes, color themes and font themes, see:
-% http://deic.uab.es/~iblanes/beamer_gallery/index_by_theme.html
-%
-\mode<presentation>
-{
-  \usetheme{default}      % or try Darmstadt, Madrid, Warsaw, ...
-  \usecolortheme{default} % or try albatross, beaver, crane, ...
-  \usefonttheme{default}  % or try serif, structurebold, ...
-  \setbeamertemplate{navigation symbols}{}
-  \setbeamertemplate{caption}[numbered]
-}
 
-\usepackage[sort&compress,round,comma,authoryear]{natbib}
 \usepackage[english]{babel}
-%\usepackage[utf8]{inputenc}
-\usepackage{fontspec}
-\usepackage{todonotes}
-\newcommand{\td}[1]{\todo[inline]{#1}}
-\usepackage{multirow}
-\usepackage{listings}
-\usepackage{multicol}
-
-
-%\usepackage{gnuplot-lua-tikz}
-%\usepackage{amsmath}
-%\usepackage{amssymb}
-
-
 \usepackage{ufalslides}
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -47,10 +18,27 @@
 
 \maketitle
 
-% Uncomment these lines for an automatically generated outline.
-%\begin{frame}{Outline} \tableofcontents \end{frame}
-
 \section{A section}
+
+\begin{frame}[fragile]
+    \frametitle{How to use the template}
+
+    \begin{lstlisting}[language=TeX]
+\documentclass[handout,aspectratio=169]{beamer}
+\usepackage[english]{babel}
+\usepackage{ufalslides}
+\end{lstlisting}
+
+    \begin{itemize}
+        \item Use \lstinline{handout} option if you want to generate a handout without
+    animations.
+
+        \item Before you begin document, define what you want to
+            appear in the title slide (see the next slide for more info).
+    \end{itemize}
+
+\end{frame}
+
 
 \begin{frame}[fragile]
     \frametitle{Content of the title page}
@@ -60,14 +48,13 @@
 \def\course{NPFL116 Compendium of Neural Machine Translation}
 \def\courseurl{https://ufal.cz/courses/npfl000}
 \def\title{Attention Mechanism}
-\def\author{Jindřich Libovický, Jindřich Helcl}
-\def\date{March 1, 2017}
+\def\author{Jindřich Libovický, Jindřich Helcl} \def\date{March 1, 2017}
 \def\licence{cc-by-nc-sa}
 \def\langtech{} % shows the LangTech and the EU logo
 \def\shownavigation{} % shows the navigation links in the bottom line
 \end{lstlisting}
 
-2. Generate the title slide using
+2. Generate the title slide using after beginning of the document by calling
 \begin{lstlisting}[language=TeX]
 \maketitle
 \end{lstlisting}
@@ -157,8 +144,9 @@ $$ i\hbar\frac{\partial}{\partial t} \Psi(\mathbf{r},t) = \left [ \frac{-\hbar^2
     \end{lstlisting}
 \end{frame}
 
+% -----------------------------------------------------------------------------
 \section{Another section}
-
+% -----------------------------------------------------------------------------
 
 \begin{frame}[fragile]
     \frametitle{Code listings}
@@ -185,6 +173,7 @@ x = 3 + 5
 
 \end{frame}
 
+% -----------------------------------------------------------------------------
 
 \begin{frame}[fragile]
     \frametitle{References}
@@ -206,6 +195,34 @@ Full citation: \\ {\tiny \bibentry{helcl2017neural}}
 
 \end{frame}
 
+% -----------------------------------------------------------------------------
+
+\begin{frame}[fragile]
+    \frametitle{Summary, outline, references}
+
+    The summary slide can be inserted by calling:
+
+    \begin{lstlisting}[language=TeX]
+\summary{Name of the summary slide}{%
+    Content of the summary slide
+}
+    \end{lstlisting}
+
+    Outline with optionally highlighted current section can be inserted by:
+    \begin{lstlisting}[language=TeX]
+\outline{Outline slide title}
+\outlinecurrent{Whatever outline title you wish}
+    \end{lstlisting}
+
+    To show the references do:
+
+    \begin{lstlisting}[language=TeX]
+\references{pathToYourBibFile.bib}
+    \end{lstlisting}
+
+\end{frame}
+
+% -----------------------------------------------------------------------------
 
 \begin{frame}
     \frametitle{Itemize}
@@ -226,6 +243,8 @@ Full citation: \\ {\tiny \bibentry{helcl2017neural}}
 
 \end{frame}
 
+% -----------------------------------------------------------------------------
+
 \begin{frame}
     \frametitle{Enumerate}
 
@@ -244,6 +263,8 @@ Full citation: \\ {\tiny \bibentry{helcl2017neural}}
     \end{enumerate}
 
 \end{frame}
+
+% -----------------------------------------------------------------------------
 
 \begin{frame}[allowframebreaks]
     \frametitle{What happens with too much content?}
@@ -269,45 +290,22 @@ Full citation: \\ {\tiny \bibentry{helcl2017neural}}
 
 \end{frame}
 
-{
-\setbeamercolor{background canvas}{bg=lightgray}
-\begin{frame}[plain]
- \centering
 
-    \colorbox{ufal}{{\bf\tiny\color{lightgray} \scalebox{0.9}{\title}}}
+% -----------------------------------------------------------------------------
 
-    \vspace{5pt}{\color{ufal}\bfseries\Large Summary}\vspace{5pt}
+\summary{Summary}{%
+    \begin{enumerate}
 
-    {\setlength{\fboxrule}{1.5pt}
-    \fcolorbox{ufal}{white}{
-        \begin{minipage}{0.7\paperwidth}
-            \vspace{3pt}
-            \begin{enumerate}
+        \item This template is tremendous.
 
-                \item This template is tremendous.
+        \item If you don't use the template you will be very very sad.
 
-                \item If you don't use the template you will be very very sad.
+        \item Believe me. It's tremendous.
 
-                \item Believe me. It's tremendous.
+    \end{enumerate}
+}
+% -----------------------------------------------------------------------------
 
-            \end{enumerate}
-        \end{minipage}
-    }}
-
-
-    \begin{textblock*}{\paperwidth}(0pt,\paperheight - 25pt)
-        \centering
-        \Large\bf \url{ufal.mff.cuni.cz/courses/npfl000}
-    \end{textblock*}
-\end{frame}}
-
-
-\begin{frame}[allowframebreaks]
-    \frametitle{References}
-    \tiny
-    \bibliography{references.bib}
-    \bibliographystyle{plainnat}
-\end{frame}
-
+\references{references.bib}
 
 \end{document}
