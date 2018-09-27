@@ -2,7 +2,7 @@ SHELL=bash
 NAME=demo
 LATEX=xelatex
 
-all: $(NAME).pdf
+all: $(NAME).pdf sty
 
 $(NAME).pdf: $(NAME).tex references.bib ufalslides.sty
 	latexmk -pdflatex="$(LATEX) %O %S" -pdf -dvi- -ps- -halt-on-error $(NAME)

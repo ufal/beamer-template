@@ -72,11 +72,11 @@
         \vspace{10pt}
 
         \begin{columns}[T]
-            \column{160pt}
+            \column{165pt}
             \input{logos/cuni}
             \input{logos/ufal}
             \ifdefined\langtech
-                \includegraphics[scale=0.14]{langtech.png}~
+                \input{logos/langtech}~
                 \input{logos/opvv}
             \fi
             \column{125pt} \begin{minipage}[c]{120pt}
@@ -158,7 +158,7 @@
 \setbeamertemplate{footline}{%
     \colorbox{ufal}{{\bf\tiny\color{lightgray} \scalebox{0.9}{\title}}}
     \ifdefined\shownavigation
-%        \scalebox{0.9}{\insertsectionnavigationhorizontal{}{\hskip0pt   plus1filll}{}}
+        \scalebox{0.9}{\insertsectionnavigationhorizontal{0pt}{}{\hfill}}
     \fi
     \hfill \insertframenumber/\inserttotalframenumber\quad
 }
