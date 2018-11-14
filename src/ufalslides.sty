@@ -47,12 +47,11 @@
 \setbeamercolor{enumerate item}{fg=ufal}
 \setbeamercolor{enumerate subitem}{fg=ufal}
 \setbeamercolor{enumerate subsubitem}{fg=ufal}
-\setbeamercolor{section in toc}{fg=white}
 
 \setbeamersize{text margin left=15pt,text margin right=15pt}
 
 \def\maketitle{{%
-    \begin{frame}[plain]
+    \begin{frame}[plain,noframenumbering]
         \begin{textblock*}{\paperwidth}(0pt,0pt)
         \colorbox{ufal}{{\bf\color{lightgray} \course} }
         \end{textblock*}
@@ -214,5 +213,21 @@
   breakatwhitespace=true,
   numbersep=3pt,
   backgroundcolor = \color{lightgray}}
+
+\setbeamercolor{icolor}{fg=white,bg=ufal}
+\setbeamertemplate{section page}
+{
+    \begin{centering}
+\vbox{}
+\vfill
+    \hbox{}\hfill\begin{beamercolorbox}[sep=12pt,center,wd=.6666\textwidth]{icolor}
+    \usebeamerfont{section title}\insertsection\par
+    \end{beamercolorbox}\hfill\hbox{}
+\vfill
+\vbox{}
+    \end{centering}
+}
+\AtBeginSection{\begin{frame}[plain,noframenumbering]\sectionpage\end{frame}}
+
 
 \renewcommand\bibsection{\section[]{\refname}}
