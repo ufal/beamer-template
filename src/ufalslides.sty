@@ -50,6 +50,8 @@
 \setbeamercolor{enumerate subitem}{fg=ufal}
 \setbeamercolor{enumerate subsubitem}{fg=ufal}
 
+\setbeamercolor{section in toc}{fg=black}
+
 \setbeamersize{text margin left=15pt,text margin right=15pt}
 
 \def\maketitle{{%
@@ -161,7 +163,7 @@
     \ifdefined\shownavigation
         \scalebox{0.9}{\insertsectionnavigationhorizontal{0pt}{}{\hfill}}
     \fi
-    \hfill \insertframenumber/\inserttotalframenumber\quad
+    \hfill \insertframenumber/\inserttotalframenumber\quad\quad
 }
 
 \definecolor{slidesColor}{rgb}{.1764,.4392,.7255}
@@ -223,13 +225,13 @@
 \vbox{}
 \vfill
     \hbox{}\hfill\begin{beamercolorbox}[sep=12pt,center,wd=.6666\textwidth]{icolor}
-    \usebeamerfont{section title}\insertsection\par
+    \bf\usebeamerfont{section title}\insertsection\par
     \end{beamercolorbox}\hfill\hbox{}
 \vfill
 \vbox{}
     \end{centering}
 }
-\AtBeginSection{\begin{frame}[plain,noframenumbering]\sectionpage\end{frame}}
+\AtBeginSection{{\setbeamercolor{background canvas}{bg=lightgray}\begin{frame}[plain,noframenumbering]\sectionpage\end{frame}}}
 
 
 \renewcommand\bibsection{\section[]{\refname}}

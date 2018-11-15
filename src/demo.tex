@@ -109,9 +109,30 @@
 % -----------------------------------------------------------------------------
 
 \begin{frame}[fragile]
+    \frametitle{Sections}
+
+    Sections have a title slide. To disable the title slide do:
+
+    \begin{lstlisting}[language=TeX]
+        \AtBeginSection{}
+    \end{lstlisting}
+
+    You can generate an outline of the slides by:
+
+    \begin{lstlisting}[language=TeX]
+        \outline{Title of your outline slide}
+        \outlinecurrent{Outline with highlighted current section}
+    \end{lstlisting}
+
+\end{frame}
+
+
+% -----------------------------------------------------------------------------
+
+\begin{frame}[fragile]
     \frametitle{Equations}
 
-    \centering Sans serif font also for equations
+    \centering Serif font also for equations
 
     $$i\hbar\frac{\partial}{\partial t} \Psi(\mathbf{r},t) = \left [ \frac{-\hbar^2}{2\mu}\nabla^2 + V(\mathbf{r},t)\right ] \Psi(\mathbf{r},t) ]$$
 
