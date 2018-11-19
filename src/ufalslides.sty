@@ -233,5 +233,21 @@
 }
 \AtBeginSection{{\setbeamercolor{background canvas}{bg=lightgray}\begin{frame}[plain,noframenumbering]\sectionpage\end{frame}}}
 
+\setbeamertemplate{subsection page}
+{
+    \begin{centering}
+\vbox{}
+\vfill
+    \hbox{}\hfill\begin{beamercolorbox}[sep=12pt,center,wd=.6666\textwidth]{icolor}
+        {\bf\small \insertsection} \\
+        \usebeamerfont{section title}\insertsubsection\par
+    \end{beamercolorbox}\hfill\hbox{}
+\vfill
+\vbox{}
+    \end{centering}
+}
+\AtBeginSubsection{{\setbeamercolor{background canvas}{bg=lightgray}\begin{frame}[plain,noframenumbering]\subsectionpage\end{frame}}}
+
+
 
 \renewcommand\bibsection{\section[]{\refname}}
