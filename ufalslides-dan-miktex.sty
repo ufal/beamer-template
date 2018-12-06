@@ -6859,14 +6859,13 @@
 
 \newcommand\outlinecurrent[1]{\begin{frame}{#1} \tableofcontents[currentsection] \end{frame}}
 
-%%%!!! DZ: The following setting makes my Miktex fail.
-%\setbeamertemplate{footline}{    \colorbox{ufal}{{\bf\tiny\color{lightgray}
-%\scalebox{0.9}{\title}}}
-%    \ifdefined\shownavigation
-%        \scalebox{0.9}{\insertsectionnavigationhorizontal{0pt}{}{\hfill}}
-%    \fi
-%    \hfill \insertframenumber/\inserttotalframenumber\quad\quad
-%}
+\setbeamertemplate{footline}{
+  \colorbox{ufal}{{\bf\tiny\color{lightgray}\scalebox{0.9}{\title}}}
+  \ifdefined\shownavigation
+    \scalebox{0.9}{\insertsectionnavigationhorizontal{0pt}{}{\hfill}}
+  \fi
+  \hfill \insertframenumber/\inserttotalframenumber\quad\quad
+}
 
 \definecolor{slidesColor}{rgb}{.1764,.4392,.7255}
 \definecolor{readingColor}{rgb}{.1490,.7725,.3608}
