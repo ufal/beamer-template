@@ -2,6 +2,8 @@
 
 \usepackage[english]{babel}
 \usepackage{ufalslides}
+\usepackage{xcolor}
+\usepackage{textcomp}
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \def\course{NPFL000 Name of the course}
@@ -51,11 +53,15 @@
 \def\course{NPFL116 Compendium of Neural Machine Translation}
 \def\courseurl{https://ufal.cz/courses/npfl000}
 \def\title{Attention Mechanism}
+\def\subtitle{How to attend with a mechanism}
 \def\author{Jindřich Libovický, Jindřich Helcl} \def\date{March 1, 2017}
 \def\licence{cc-by-nc-sa}
 \def\langtech{} % shows the LangTech and the EU logo
 \def\shownavigation{} % shows the navigation links in the bottom line
 \end{lstlisting}
+
+    {\tt  \textbackslash course} and {\tt  \textbackslash subtitle} are optional, others must be at least
+    an empty string
 
 2. Generate the title slide using after beginning of the document by calling
 \begin{lstlisting}[language=TeX]
@@ -140,6 +146,36 @@
 $$ i\hbar\frac{\partial}{\partial t} \Psi(\mathbf{r},t) = \left [ \frac{-\hbar^2}{2\mu}\nabla^2 + V(\mathbf{r},t)\right ] \Psi(\mathbf{r},t) ]$$
     \end{lstlisting}
 
+    Equations may break compilation with Mik\TeX. If this is your case use the
+    package with option \lstinline[language=TeX]{miktex}.
+
+\begin{lstlisting}[language=TeX]
+    \usepackage[miktex]{ufallslides}
+\end{lstlisting}
+
+\end{frame}
+
+% -----------------------------------------------------------------------------
+
+\begin{frame}
+    \frametitle{Color Palette}
+
+    Named colors from a pallete from
+    \url{https://www.colorcombos.com/colors/FF6600} \\[15pt]
+
+    \begin{center}
+    \scalebox{1.2}{%
+    \begin{tabular}{cc}
+
+    \colorbox{ufal}{\bf ufal} &     \color{ufal} \bf ufal \\
+    \colorbox{ufalviolet}{\bf ufalviolet} &     \color{ufalviolet} \bf ufalviolet \\
+    \colorbox{ufalblue}{\bf ufalblue} &     \color{ufalblue} \bf ufalblue \\
+    \colorbox{ufalred}{\bf ufalred} &     \color{ufalred} \bf ufalred \\
+    \colorbox{ufallightblue}{\bf ufallightblue} &     \color{ufallightblue} \bf ufallightblue \\
+    \colorbox{ufalgreen}{\bf ufalgreen} &     \color{ufalgreen} \bf ufalgreen \\
+    \end{tabular}}
+    \end{center}
+
 \end{frame}
 
 
@@ -180,14 +216,9 @@ $$ i\hbar\frac{\partial}{\partial t} \Psi(\mathbf{r},t) = \left [ \frac{-\hbar^2
 print("Hello, ÚFAL.")
 x = 3 + 5
     \end{lstlisting}
-
-    is produced with this code:
-    \begin{lstlisting}[language=TeX]
-\begin{lstlisting}[language=Python]
-print("Hello, ÚFAL.")
-x = 3 + 5
-\end{lstlisting}
-    \end{lstlisting}
+%
+    is produced by putting the code between {\tt  \textbackslash
+    begin\{lstlisting\}} and {\tt \textbackslash end\{lstlisting\}}
 
     Inline code (\lstinline[language=Python]{import numpy as np}) can be
     inserted with the \lstinline[language=TeX]{\lstinline} command.
@@ -216,6 +247,9 @@ Full citation: \\ {\tiny \bibentry{helcl2017neural}}
 
     \tiny
     \citet{snover2006study,lu2016knowing,tu2016modeling,feng2016improving,zhang2016recurrent,alkhouli2016alignment,graves2014neural,specia2016shared,elliott2016multi30k}
+
+If you prefere managing bibliography on your own, use the package with option
+    \lstinline[language=TeX]{custombibset}.
 
 \end{frame}
 

@@ -6,6 +6,16 @@
 \RequirePackage{fontspec}
 \RequirePackage{graphicx}
 
+\DeclareOption{custombib}{
+  \def\custombibset{}
+}
+\ProcessOptions\relax
+
+\DeclareOption{miktex}{
+  \def\miktex{}
+}
+\ProcessOptions\relax
+
 \mode<presentation>
 {
   \usetheme{default}
@@ -22,17 +32,28 @@
 \usepackage{fontspec}
 \setmainfont{FreeSans}
 \usefonttheme{professionalfonts}
-\usepackage[math-style=ISO, bold-style=ISO, sans-style=italic, nabla=upright, partial=upright]{unicode-math}
+\ifdefined\miktex
+\else
+    \usepackage[math-style=ISO, bold-style=ISO, sans-style=italic, nabla=upright, partial=upright]{unicode-math}
+\fi
 
-\usepackage[sort&compress,round,comma,authoryear]{natbib}
+\ifdefined\custombibset
+\else
+    \usepackage[sort&compress,round,comma,authoryear]{natbib}
+\fi
+\usepackage{ifthen}
 \usepackage{bibentry}
 \usepackage{ifthen}
 \nobibliography*
 
 \definecolor{ufal}{rgb}{.956862,.482352,.1254901}
-\definecolor{ufal}{rgb}{.956862,.482352,.1254901}
 \definecolor{lightgray}{rgb}{0.93, 0.93, 0.93}
 \definecolor{middlegray}{rgb}{0.87, 0.87, 0.87}
+\definecolor{ufalviolet}{RGB}{102, 51, 153}
+\definecolor{ufalblue}{RGB}{ 21, 72, 144 }
+\definecolor{ufalred}{RGB}{	204, 0, 0}
+\definecolor{ufallightblue}{RGB}{ 51, 153, 255}
+\definecolor{ufalgreen}{RGB}{85, 212, 63 }
 
 \setbeamercolor{title}{fg=ufal}
 \setbeamercolor{titlelike}{fg=ufal}
@@ -54,10 +75,17 @@
 
 \def\maketitle{{    \begin{frame}[plain,noframenumbering]
         \begin{textblock*}{\paperwidth}(0pt,0pt)
-        \colorbox{ufal}{{\bf\color{lightgray} \course} }
+ 		\ifdefined\course
+            \colorbox{ufal}{{\bf\color{lightgray} \course} }
+        \fi
         \end{textblock*}
 
-        {\Huge\bf \color{ufal} \title\par}
+        {\Huge\bf \color{ufal} \title{}}
+		\ifdefined\subtitle
+		\\[5pt]
+		{\Large\bf \color{ufal} \subtitle{}}
+		\fi
+        \par
 
         \vspace{5pt}
         \author
@@ -9668,10 +9696,9 @@
 }
 \end{pspicture}
  }}{}
+            \\
 
-            \centering
-            \ifdefined\licence
-                \tiny unless otherwise stated
+            \ifdefined\licence                \centering\tiny unless otherwise stated
             \fi
 
         \end{columns}
@@ -9688,7 +9715,7 @@
 \begin{frame}[plain]
  \centering
 
-    \colorbox{ufal}{{\bf\tiny\color{lightgray} \scalebox{0.9}{\title}}}
+    \colorbox{ufal}{{\bf\tiny\color{lightgray} \scalebox{0.9}{\vphantom{/jIléyČ\{\}}\title}}}
 
     \vspace{5pt}{\color{ufal}\bfseries\Large #1}\vspace{5pt}
 
@@ -9711,7 +9738,7 @@
 \setbeamertemplate{frametitle}{
     \nointerlineskip
     \begin{beamercolorbox}[sep=5pt,wd=\paperwidth]{graybox}
-        \color{ufal}\bfseries\insertframetitle
+        \color{ufal}\vphantom{/jI\{\}}\bfseries\insertframetitle
     \end{beamercolorbox}
 
 }
@@ -9731,7 +9758,12 @@
     \ifdefined\shownavigation
         \scalebox{0.9}{\insertsectionnavigationhorizontal{0pt}{}{\hfill}}
     \fi
-    \hfill \insertframenumber/\inserttotalframenumber\quad\quad
+    \hfill
+	\insertframenumber/	  \ifdefined\lastslidenumber
+        \lastslidenumber
+	  \else
+	    \inserttotalframenumber
+      \fi	\quad
 }
 
 \definecolor{slidesColor}{rgb}{.1764,.4392,.7255}
@@ -9982,4 +10014,11 @@
 
 
 
+\ifdefined\custombibset
+\else
 \renewcommand\bibsection{\section[]{\refname}}
+\fi
+
+
+\newenvironment{slide}[1]{\begin{frame}\frametitle{#1}}{\end{frame}}
+\newenvironment{fragileslide}[1]{\begin[fragile]{frame}\frametitle{#1}}{\end{frame}}
