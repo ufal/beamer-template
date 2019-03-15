@@ -39,21 +39,21 @@
 
 \ifdefined\custombibset
 \else
-    \usepackage[sort&compress,round,comma,authoryear]{natbib}
+    \usepackage[round,comma,authoryear]{natbib}
+    \renewcommand{\newblock}{}
 \fi
 \usepackage{ifthen}
 \usepackage{bibentry}
-\usepackage{ifthen}
 \nobibliography*
 
 \definecolor{ufal}{rgb}{.956862,.482352,.1254901}
 \definecolor{lightgray}{rgb}{0.93, 0.93, 0.93}
 \definecolor{middlegray}{rgb}{0.87, 0.87, 0.87}
-\definecolor{ufalviolet}{RGB}{102, 51, 153}
-\definecolor{ufalblue}{RGB}{ 21, 72, 144 }
+\definecolor{ufalblue}{rgb}{.1764,.4392,.7255}
 \definecolor{ufalred}{RGB}{	204, 0, 0}
 \definecolor{ufallightblue}{RGB}{ 51, 153, 255}
-\definecolor{ufalgreen}{RGB}{85, 212, 63 }
+\definecolor{ufallightblue}{rgb}{.2353,.7490,.8784}
+\definecolor{ufalgreen}{rgb}{.1490,.7725,.3608}
 
 \setbeamercolor{title}{fg=ufal}
 \setbeamercolor{titlelike}{fg=ufal}
@@ -9746,8 +9746,10 @@
 \newcommand\references[1]{\begin{frame}[allowframebreaks]
     \frametitle{References}
     \tiny
-    \bibliography{#1}
     \bibliographystyle{plainnat}
+
+    \bibliography{#1}
+
 \end{frame}}
 
 \newcommand\outline[1]{\begin{frame}{#1} \tableofcontents \end{frame}}
