@@ -9,10 +9,14 @@
 \DeclareOption{custombib}{
   \def\custombibset{}
 }
-\ProcessOptions\relax
+
+\DeclareOption{nounicodemath}{
+  \def\nounicodemathset{}
+}
 
 \DeclareOption{miktex}{
   \def\miktex{}
+  \def\nounicodemathset{}
 }
 \ProcessOptions\relax
 
@@ -32,23 +36,25 @@
 \usepackage{fontspec}
 \setmainfont{FreeSans}
 \usefonttheme{professionalfonts}
-\ifdefined\miktex
+\ifdefined\nounicodemathset
 \else
-    \usepackage[math-style=ISO, bold-style=ISO, sans-style=italic, nabla=upright, partial=upright]{unicode-math}
+  \usepackage[math-style=ISO, bold-style=ISO, sans-style=italic, nabla=upright, partial=upright]{unicode-math}
 \fi
 
 \ifdefined\custombibset
 \else
-    \usepackage[round,comma,authoryear]{natbib}
-    \renewcommand{\newblock}{}
+  \usepackage[sort&compress,round,comma,authoryear]{natbib}
+  \usepackage{bibentry}
+  \nobibliography*
 \fi
 \usepackage{ifthen}
-\usepackage{bibentry}
-\nobibliography*
 
 \definecolor{ufal}{rgb}{.956862,.482352,.1254901}
 \definecolor{lightgray}{rgb}{0.93, 0.93, 0.93}
 \definecolor{middlegray}{rgb}{0.87, 0.87, 0.87}
+
+\def\emphcolor#1{\textcolor{ufal}{#1}}
+
 \definecolor{ufalblue}{rgb}{.1764,.4392,.7255}
 \definecolor{ufalred}{RGB}{	204, 0, 0}
 \definecolor{ufallightblue}{RGB}{ 51, 153, 255}
@@ -9738,7 +9744,7 @@
 \setbeamertemplate{frametitle}{
     \nointerlineskip
     \begin{beamercolorbox}[sep=5pt,wd=\paperwidth]{graybox}
-        \color{ufal}\vphantom{/jI\{\}}\bfseries\insertframetitle
+        \color{ufal}\vphantom{/jIéyČÚ\{\}}\bfseries\insertframetitle
     \end{beamercolorbox}
 
 }
@@ -9756,7 +9762,10 @@
 
 \newcommand\outlinecurrent[1]{\begin{frame}{#1} \tableofcontents[currentsection] \end{frame}}
 
-\setbeamertemplate{footline}{    \colorbox{ufal}{{\bf\tiny\color{lightgray} \scalebox{0.9}{\title}}}
+\setbeamertemplate{footline}{
+	\ifdefined\showtitleoneveryframe
+        \colorbox{ufal}{{\bf\tiny\color{lightgray} \scalebox{0.9}{\title}}}
+	\fi
     \ifdefined\shownavigation
         \scalebox{0.9}{\insertsectionnavigationhorizontal{0pt}{}{\hfill}}
     \fi
@@ -10023,4 +10032,7 @@
 
 
 \newenvironment{slide}[1]{\begin{frame}\frametitle{#1}}{\end{frame}}
-\newenvironment{fragileslide}[1]{\begin[fragile]{frame}\frametitle{#1}}{\end{frame}}
+\newenvironment{fragileslide}[2][]
+  {\begin{frame}[fragile,environment=fragileslide,#1]
+  \frametitle{{#2}}}
+  {\end{frame}}
