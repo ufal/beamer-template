@@ -133,6 +133,7 @@
             \end{minipage}
 
             \column{.2\paperwidth}
+            \ifdefined\licence%
             \quad\quad
             \ifthenelse{\equal{\licence}{cc-by-nc-sa}}{\scalebox{0.8}{\input{cc/by-nc-sa}}}{}
             \ifthenelse{\equal{\licence}{cc-by-nc-nd}}{\scalebox{0.8}{\input{cc/by-nc-nd}}}{}
@@ -141,9 +142,7 @@
             \ifthenelse{\equal{\licence}{cc-by-sa}}{\scalebox{0.8}{\input{cc/by-sa}}}{}
             \ifthenelse{\equal{\licence}{cc-by}}{\scalebox{0.8}{\input{cc/by}}}{}
             \\
-
-            \ifdefined\licence%
-                \centering\tiny unless otherwise stated
+            \centering\tiny unless otherwise stated
             \fi
 
         \end{columns}
