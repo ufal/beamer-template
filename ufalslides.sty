@@ -7219,7 +7219,7 @@
             \end{minipage}
 
             \column{.2\paperwidth}
-            \quad\quad
+            \ifdefined\licence            \quad\quad
             \ifthenelse{\equal{\licence}{cc-by-nc-sa}}{\scalebox{0.8}{\psset{xunit=.5pt,yunit=.5pt,runit=.5pt}
 \begin{pspicture}(120,42)
 {
@@ -9703,8 +9703,7 @@
 \end{pspicture}
  }}{}
             \\
-
-            \ifdefined\licence                \centering\tiny unless otherwise stated
+            \centering\tiny unless otherwise stated
             \fi
 
         \end{columns}
