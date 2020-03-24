@@ -15,7 +15,7 @@ view:
 	xdg-open $(NAME).pdf
 
 clean:
-	rm $(NAME).{aux,bbl,log,out,pdf,toc}
+	rm -f $(NAME).{aux,bbl,log,out,pdf,toc,vrb,fls,nav,snm}
 
 sty:
 	perl latexpand ufalslides.sty > ../ufalslides.sty
