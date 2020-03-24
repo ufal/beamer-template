@@ -251,8 +251,12 @@ Full citation: \\ {\tiny \bibentry{helcl2017neural}}
     \tiny
     \citet{snover2006study,lu2016knowing,tu2016modeling,feng2016improving,zhang2016recurrent,alkhouli2016alignment,graves2014neural,specia2016shared,elliott2016multi30k}
 
-If you prefere managing bibliography on your own, use the package with option
+If you prefer managing bibliography on your own, use the package with option
     \lstinline[language=TeX]{custombibset}.
+
+If you want bibliography to have its own section, use 
+    \lstinline[language=TeX]{\section{References}} before the 
+	\lstinline[language=TeX]{\references} command. 
 
 \end{frame}
 
@@ -366,6 +370,10 @@ If you prefere managing bibliography on your own, use the package with option
     \end{enumerate}
 }
 % -----------------------------------------------------------------------------
+
+%Use this if you want references as a section,
+%i.e. in the ouline and with a sectionpage
+%\section{References}
 
 \references{references.bib}
 
