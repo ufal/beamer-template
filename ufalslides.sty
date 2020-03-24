@@ -18,6 +18,11 @@
   \def\miktex{}
   \def\nounicodemathset{}
 }
+
+\DeclareOption{czech}{
+  \def\ufalslidesczech{}
+}
+
 \ProcessOptions\relax
 
 \mode<presentation>
@@ -7213,10 +7218,16 @@
 \end{pspicture}
              \fi
             \column{125pt} \begin{minipage}[c]{120pt}
+	    \ifdefined\ufalslidesczech
+            \tiny ~ \\ Univerzita Karlova \\
+            Matematicko-fyzikální fakulta \\
+            Ústav formální a aplikované lingvistiky
+	    \else
             \tiny ~ \\ Charles University \\
             Faculty of Mathematics and Physics \\
             Institute of Formal and Applied Linguistics
-            \end{minipage}
+            \fi
+	    \end{minipage}
 
             \column{.2\paperwidth}
             \ifdefined\licence            \quad\quad
@@ -9703,7 +9714,11 @@
 \end{pspicture}
  }}{}
             \\
-            \centering\tiny unless otherwise stated
+	      \ifdefined\ufalslidesczech
+                \centering\tiny není-li uvedeno jinak
+              \else
+		\centering\tiny unless otherwise stated
+	      \fi
             \fi
 
         \end{columns}
