@@ -8,6 +8,11 @@ For information on using the template, view the
 [`demo.pdf`](https://github.com/ufal/beamer-template/blob/master/demo.pdf)
 file.
 
+## Installation and use
+
+You have to use `xelatex` to compile your files.
+If you are using TeXLive and `texliveonfly`, it will not automatically install PSTrics, you have to run `tlmgr install pst-tools xetex-pstrics`. After that, you can compile you file with `latexmk -xelatex my_source.tex`.
+
 ## Contributing
 
 The files in the root of the repository are machine-generated. Please do not
