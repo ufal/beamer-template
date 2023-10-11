@@ -103,6 +103,14 @@
 \setbeamercolor*{bibliography entry note}{fg={black!40}}
 
 \def\maketitle{{%
+
+    \ifthenelse{\equal{\licence}{cc-by-nc-sa}}{\gdef\licencelogo{\input{cc/by-nc-sa}}}{}%
+    \ifthenelse{\equal{\licence}{cc-by-nc-nd}}{\gdef\licencelogo{\input{cc/by-nc-nd}}}{}%
+    \ifthenelse{\equal{\licence}{cc-by-nc}}{\gdef\licencelogo{\input{cc/by-nc}}}{}%
+    \ifthenelse{\equal{\licence}{cc-by-nd}}{\gdef\licencelogo{\input{cc/by-nd}}}{}%
+    \ifthenelse{\equal{\licence}{cc-by-sa}}{\gdef\licencelogo{\input{cc/by-sa}}}{}%
+    \ifthenelse{\equal{\licence}{cc-by}}{\gdef\licencelogo{\input{cc/by}}}{}%
+
     \begin{frame}[plain,noframenumbering]
         \begin{textblock*}{\paperwidth}(0pt,0pt)
  		\ifdefined\course
@@ -151,14 +159,7 @@
 
             \column{.2\paperwidth}
             \ifdefined\licence%
-	    \hbox{}\hfill%
-            \ifthenelse{\equal{\licence}{cc-by-nc-sa}}{\scalebox{0.8}{\input{cc/by-nc-sa}}}{}%
-            \ifthenelse{\equal{\licence}{cc-by-nc-nd}}{\scalebox{0.8}{\input{cc/by-nc-nd}}}{}%
-            \ifthenelse{\equal{\licence}{cc-by-nc}}{\scalebox{0.8}{\input{cc/by-nc}}}{}%
-            \ifthenelse{\equal{\licence}{cc-by-nd}}{\scalebox{0.8}{\input{cc/by-nd}}}{}%
-            \ifthenelse{\equal{\licence}{cc-by-sa}}{\scalebox{0.8}{\input{cc/by-sa}}}{}%
-            \ifthenelse{\equal{\licence}{cc-by}}{\scalebox{0.8}{\input{cc/by}}}{}%
-	    \hspace{-0.22cm}\hfill \hbox{}
+            \hspace{2.75pt}\hfill\licencelogo\hfill\hspace{0pt}%
             \\
 	      \ifdefined\ufalslidesczech
                 \centering\tiny není-li uvedeno jinak
