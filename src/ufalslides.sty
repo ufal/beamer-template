@@ -137,41 +137,41 @@
         \begin{minipage}{\paperwidth}
         \vspace{10pt}
 
-        \begin{columns}[T]
-            \column{165pt}
-            \input{logos/cuni}
-            \input{logos/ufal}
+            \ifdefined\ufalslidesczech
+                \begin{minipage}{40pt}\input{logos/cuni_cs}\end{minipage}
+            \else
+                \begin{minipage}{40pt}\input{logos/cuni_en}\end{minipage}
+            \fi
+            \begin{minipage}{40pt}\input{logos/ufal}\end{minipage}
             \ifdefined\langtech
-                \input{logos/langtech}~
-                \input{logos/opvv}
+                \begin{minipage}{40pt}\input{logos/langtech}\end{minipage}
+                \begin{minipage}{40pt}\input{logos/opvv}\end{minipage}
             \fi
             \ifdefined\lindat
-                \input{logos/lindat}
+                \begin{minipage}{40pt}\input{logos/lindat}\end{minipage}
             \fi
-            \column{125pt} \begin{minipage}[c]{120pt}
-	    \ifdefined\ufalslidesczech
-            \tiny ~ \\ Univerzita Karlova \\
-            Matematicko-fyzikální fakulta \\
-            Ústav formální a aplikované lingvistiky
-	    \else
-            \tiny ~ \\ Charles University \\
-            Faculty of Mathematics and Physics \\
-            Institute of Formal and Applied Linguistics
-            \fi
-	    \end{minipage}
-
-            \column{.2\paperwidth}
-            \ifdefined\licence%
-            \hspace{2.75pt}\hfill\licencelogo\hfill\hspace{0pt}%
-            \\
-	      \ifdefined\ufalslidesczech
+        \begin{minipage}[c]{120pt}
+            \ifdefined\ufalslidesczech
+                \tiny ~ \\ Univerzita Karlova \\
+                Matematicko-fyzikální fakulta \\
+                Ústav formální a aplikované lingvistiky
+            \else
+                \tiny ~ \\ Charles University \\
+                Faculty of Mathematics and Physics \\
+                Institute of Formal and Applied Linguistics
+                \fi
+          \end{minipage}\hfill\begin{minipage}{70pt}
+          \ifdefined\licence%
+             \centering
+             \begin{minipage}{65pt}\centering\licencelogo\end{minipage}%
+             \\
+	         \ifdefined\ufalslidesczech
                 \centering\tiny není-li uvedeno jinak
-              \else
-		\centering\tiny unless otherwise stated
-	      \fi
-            \fi
-
-        \end{columns}
+             \else
+                \centering\tiny unless otherwise stated
+	         \fi
+          \fi
+      \end{minipage}\hspace{10pt}
 
         \vspace{20pt}
         \end{minipage}
@@ -243,7 +243,7 @@
 	  \else
 	    \inserttotalframenumber
       \fi%
-	\quad
+	\quad\quad
 }
 
 \definecolor{slidesColor}{rgb}{.1764,.4392,.7255}
